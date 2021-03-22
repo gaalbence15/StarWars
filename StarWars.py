@@ -1,4 +1,5 @@
 import turtle
+import random
 
 
 def Up():
@@ -57,3 +58,6 @@ while True:
         ship.setx(-400)
     if ship.xcor() < -400:
         ship.setx(400)
+    if meteor.xcor()< -400:
+        meteor.setx(400)
+        meteor.sety(random.randrange(-300, 300, 1))
