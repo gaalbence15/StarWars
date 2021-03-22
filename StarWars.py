@@ -29,6 +29,7 @@ space = turtle.Screen()
 space.setup(width=800, height=600)
 space.bgpic("space.png")
 space.addshape("sprite.gif")
+space.addshape("meteor2.gif")
 space.listen()
 space.onkeypress(Up, "Up")
 space.onkeypress(Down, "Down")
@@ -40,8 +41,14 @@ ship = turtle.Turtle()
 ship.shape("sprite.gif")
 ship.penup()
 
+meteor = turtle.Turtle()
+meteor.shape("meteor2.gif")
+meteor.penup()
+meteor.setx(380)
+
 while True:
     space.update()
+    meteor.setx(meteor.xcor()-1)
     if ship.ycor() > 300:
         ship.sety(-300)
     if ship.ycor() < -300:
