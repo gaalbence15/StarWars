@@ -1,6 +1,7 @@
 import turtle
 import random
 import time
+import winsound
 
 
 def Up():
@@ -27,6 +28,11 @@ def Left():
     ship.setx(xpos)
 
 
+def MeteorReset():
+    meteor.setx(400)
+    meteor.sety(random.randrange(-300, 300, 1))
+
+
 space = turtle.Screen()
 space.setup(width=800, height=600)
 space.bgpic("space.png")
@@ -50,7 +56,7 @@ meteor.setx(380)
 
 while True:
     space.update()
-    meteor.setx(meteor.xcor() - 4)
+    meteor.setx(meteor.xcor() - 5)
     if ship.ycor() > 300:
         ship.sety(-300)
     if ship.ycor() < -300:
@@ -60,6 +66,8 @@ while True:
     if ship.xcor() < -400:
         ship.setx(400)
     if meteor.xcor() < -400:
-        meteor.setx(400)
-        meteor.sety(random.randrange(-300, 300, 1))
+        MeteorReset()
+    if meteor.xcor() == ship.xcor() and meteor.ycor() == ship.ycor():
+        MeteorReset()
+        winsound.PlaySound("explosion-01.wav", winsound.SND_ASYNC)
     time.sleep(0.0001)
