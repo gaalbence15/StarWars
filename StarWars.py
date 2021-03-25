@@ -1,5 +1,6 @@
 import turtle
 import random
+import time
 
 
 def Up():
@@ -36,7 +37,7 @@ space.onkeypress(Up, "Up")
 space.onkeypress(Down, "Down")
 space.onkeypress(Right, "Right")
 space.onkeypress(Left, "Left")
-
+space.tracer(0)
 
 ship = turtle.Turtle()
 ship.shape("sprite.gif")
@@ -49,7 +50,7 @@ meteor.setx(380)
 
 while True:
     space.update()
-    meteor.setx(meteor.xcor()-1)
+    meteor.setx(meteor.xcor() - 4)
     if ship.ycor() > 300:
         ship.sety(-300)
     if ship.ycor() < -300:
@@ -61,3 +62,4 @@ while True:
     if meteor.xcor()< -400:
         meteor.setx(400)
         meteor.sety(random.randrange(-300, 300, 1))
+    time.sleep(0.0001)
