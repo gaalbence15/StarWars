@@ -32,6 +32,7 @@ space.bgpic("space.png")
 space.addshape("sprite.gif")
 space.addshape("meteor2.gif")
 space.listen()
+space.tracer(0)
 space.onkeypress(Up, "Up")
 space.onkeypress(Down, "Down")
 space.onkeypress(Right, "Right")
@@ -58,6 +59,6 @@ while True:
         ship.setx(-400)
     if ship.xcor() < -400:
         ship.setx(400)
-    if meteor.xcor()< -400:
+    if meteor.xcor() < -400:
         meteor.setx(400)
         meteor.sety(random.randrange(-300, 300, 1))
