@@ -67,7 +67,7 @@ while True:
         ship.setx(400)
     if meteor.xcor() < -400:
         MeteorReset()
-    if meteor.xcor() == ship.xcor() and meteor.ycor() == ship.ycor():
+    if ship.xcor()-30 < meteor.xcor() < ship.xcor()+30 and ship.ycor()-30 < meteor.ycor() < ship.ycor()+30:
         MeteorReset()
         winsound.PlaySound("explosion-01.wav", winsound.SND_ASYNC)
     time.sleep(0.0001)
