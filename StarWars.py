@@ -28,9 +28,24 @@ def Left():
     ship.setx(xpos)
 
 
-def MeteorReset():
-    meteor.setx(400)
-    meteor.sety(random.randrange(-300, 300, 1))
+def MeteorGenerate(meteorName):
+    meteorName.shape("meteor2.gif")
+    meteorName.penup()
+    MeteorReset(meteorName)
+
+
+def MeteorReset(meteorName):
+    meteorName.setx(random.randrange(380, 480, 10))
+    meteorName.sety(random.randrange(-300, 300, 10))
+
+
+def MeteorMovement(meteorName):
+    meteorName.setx(meteorName.xcor() - 5)
+    if meteorName.xcor() < -400:
+        MeteorReset(meteorName)
+    if ship.xcor()-30 < meteor.xcor() < ship.xcor()+30 and ship.ycor()-30 < meteorName.ycor() < ship.ycor()+30:
+        MeteorReset(meteorName)
+        winsound.PlaySound("explosion-01.wav", winsound.SND_ASYNC)
 
 
 space = turtle.Screen()
@@ -50,13 +65,23 @@ ship.shape("sprite.gif")
 ship.penup()
 
 meteor = turtle.Turtle()
-meteor.shape("meteor2.gif")
-meteor.penup()
-meteor.setx(380)
+MeteorGenerate(meteor)
+
+meteor2 = turtle.Turtle()
+MeteorGenerate(meteor2)
+
+meteor3 = turtle.Turtle()
+MeteorGenerate(meteor3)
+
+meteor4 = turtle.Turtle()
+MeteorGenerate(meteor4)
 
 while True:
     space.update()
-    meteor.setx(meteor.xcor() - 5)
+    MeteorMovement(meteor)
+    MeteorMovement(meteor2)
+    MeteorMovement(meteor3)
+    MeteorMovement(meteor4)
     if ship.ycor() > 300:
         ship.sety(-300)
     if ship.ycor() < -300:
@@ -65,9 +90,4 @@ while True:
         ship.setx(-400)
     if ship.xcor() < -400:
         ship.setx(400)
-    if meteor.xcor() < -400:
-        MeteorReset()
-    if ship.xcor()-30 < meteor.xcor() < ship.xcor()+30 and ship.ycor()-30 < meteor.ycor() < ship.ycor()+30:
-        MeteorReset()
-        winsound.PlaySound("explosion-01.wav", winsound.SND_ASYNC)
     time.sleep(0.0001)
