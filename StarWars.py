@@ -52,7 +52,10 @@ def MeteorMovement(meteorName):
         kijelzo.clear()
         kijelzo.write(shipHP, font=("Arial", 28, "bold"))
         if shipHP == 0:
+            kijelzo.clear()
             kijelzo.write("Meghaltál!", font=("Arial", 28, "bold"))
+            ship.clear()
+            ship.ht()
 
 
 space = turtle.Screen()
