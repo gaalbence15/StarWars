@@ -47,6 +47,13 @@ def MeteorMovement(meteorName):
         MeteorReset(meteorName)
         winsound.PlaySound("explosion-01.wav", winsound.SND_ASYNC)
 
+        global shipHP
+        shipHP -= 1
+        kijelzo.clear()
+        kijelzo.write(shipHP, font=("Arial", 28, "bold"))
+        if shipHP == 0:
+            kijelzo.write("Meghaltál!", font=("Arial", 28, "bold"))
+
 
 space = turtle.Screen()
 space.setup(width=800, height=600)
@@ -59,6 +66,15 @@ space.onkeypress(Down, "Down")
 space.onkeypress(Right, "Right")
 space.onkeypress(Left, "Left")
 space.tracer(0)
+
+shipHP = 3
+
+kijelzo = turtle.Turtle()
+kijelzo.color("white")
+kijelzo.hideturtle()
+kijelzo.penup()
+kijelzo.goto(-100, 250)
+kijelzo.write(shipHP, font=("Arial", 28, "bold"))
 
 ship = turtle.Turtle()
 ship.shape("sprite.gif")
