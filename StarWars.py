@@ -43,7 +43,7 @@ def MeteorMovement(meteorName):
     meteorName.setx(meteorName.xcor() - 5)
     if meteorName.xcor() < -400:
         MeteorReset(meteorName)
-    if ship.xcor()-30 < meteor.xcor() < ship.xcor()+30 and ship.ycor()-30 < meteorName.ycor() < ship.ycor()+30:
+    if ship.distance(meteorName.xcor(), meteorName.ycor()) < 30:
         MeteorReset(meteorName)
         winsound.PlaySound("explosion-01.wav", winsound.SND_ASYNC)
 
