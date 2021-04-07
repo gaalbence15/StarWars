@@ -83,7 +83,6 @@ kijelzo.write(shipHP, font=("Arial", 28, "bold"))
 ship = turtle.Turtle()
 ship.shape("sprite.gif")
 ship.penup()
-shipHealth = 3
 
 meteor = turtle.Turtle()
 MeteorGenerate(meteor)
