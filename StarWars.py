@@ -56,6 +56,7 @@ def MeteorMovement(meteorName):
             kijelzo.write("Meghaltál!", font=("Arial", 28, "bold"))
             ship.clear()
             ship.ht()
+            turtle.done()
 
 
 space = turtle.Screen()
@@ -82,6 +83,7 @@ kijelzo.write(shipHP, font=("Arial", 28, "bold"))
 ship = turtle.Turtle()
 ship.shape("sprite.gif")
 ship.penup()
+shipHealth = 3
 
 meteor = turtle.Turtle()
 MeteorGenerate(meteor)
